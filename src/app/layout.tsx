@@ -1,15 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Exo, Exo_2 } from "next/font/google";
 import "./globals.css";
+import Sidebar from "./components/Sidebar";
+import LeftSideBar from "./components/LeftSidebar";
+import { ThemeProvider } from "./context/ThemeContext";
+import { Toaster } from "sonner";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const exo = Exo({
+  variable: "--font-exo",
   subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const exo2 = Exo_2({
+  variable: "--font-exo-2",
   subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -19,15 +27,29 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${exo.variable} ${exo2.variable} antialiased`}>
+      <Toaster richColors position="top-center" />
+        <ThemeProvider>
+          <div className="flex min-h-screen w-full">
+            {/* Sidebar */}
+            <aside className="w-[90px] bg-[#1C1D22] dark:bg-[#222327] hidden lg:flex items-start justify-center">
+              <Sidebar />
+            </aside>
+            
+            <aside className="hidden  w-[318px] lg:flex items-center justify-center bg-white dark:bg-[#222327] dark:text-white border-r border-gray-200 dark:border-gray-700 transition-colors duration-300">
+              <LeftSideBar />
+            </aside>
+            
+            <main className="flex-1 overflow-y-auto bg-white dark:bg-[#222327] text-black dark:text-white transition-colors duration-300">
+              {children}
+            </main>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
