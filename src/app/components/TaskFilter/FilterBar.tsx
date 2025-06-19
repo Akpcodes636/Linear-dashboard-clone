@@ -2,17 +2,22 @@
 
 import { useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
-import FilterModal from "../TaskFilter/FilterModel";
+// import FilterModal from "../TaskFilter/FilterModel";
+
+interface Task {
+    status: string;
+    project: string;
+}
 
 interface FilterBarProps {
-    onApply: (filters: Record<string, any>) => void;
+    onApply: (filters: Partial<Pick<Task, "status" | "project">>) => void;
 }
 
-interface FilterModalProps {
-    isOpen: boolean;
-    onClose: () => void;
-    onApply: (filters: Record<string, any>) => void;
-}
+// interface FilterModalProps {
+//     isOpen: boolean;
+//     onClose: () => void;
+//     onApply: (filters: Record<string, any>) => void;
+// }
 
 export default function FilterBar({ onApply }: FilterBarProps) {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -37,11 +42,11 @@ export default function FilterBar({ onApply }: FilterBarProps) {
                 </button>
             </div>
 
-            <FilterModal
+            {/* <FilterModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 onApply={onApply}
-            />
+            /> */}
         </>
     );
 }
