@@ -2,18 +2,15 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import TaskBoard from "./components/TaskBoard";
-import FilterBar from "./components/TaskFilter/FilterBar";
 import AddViewButton from "./components/AddViewButton";
 import { Task } from "./components/TaskBoard";
 import Image from "next/image";
 
 export default function Page() {
-  const [filters, setFilters] = useState<Partial<Pick<Task, "status" | "project">>>({});
+  const [filters] = useState<Partial<Pick<Task, "status" | "project">>>({});
   const [customColumns, setCustomColumns] = useState<string[]>([]);
 
-  const handleApplyFilters = (newFilters: Partial<Pick<Task, "status" | "project">>) => {
-    setFilters(newFilters);
-  };
+
 
   const handleAddColumn = (name: string) => {
     if (!customColumns.includes(name)) {

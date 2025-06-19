@@ -1,7 +1,4 @@
 "use client";
-
-import { useState } from "react";
-import { BsThreeDots } from "react-icons/bs";
 // import FilterModal from "../TaskFilter/FilterModel";
 
 // interface Task {

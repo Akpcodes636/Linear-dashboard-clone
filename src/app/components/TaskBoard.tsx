@@ -19,7 +19,7 @@ interface TaskBoardProps {
   filters: Partial<Pick<Task, "status" | "project">>;
 }
 
-export default function TaskBoard({ customColumns = [], filters = {} }: TaskBoardProps) {
+export default function TaskBoard({ customColumns = [] }: TaskBoardProps) {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
   // const [filters, setFilters] = useState<Partial<Pick<Task, "status" | "project">>>({});
