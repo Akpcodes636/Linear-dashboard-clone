@@ -19,7 +19,7 @@ export default function Page() {
           <div className="flex items-center gap-2 h-full border-b-2 border-[#1C1D22]">
             <div className="w-[18px] h-[18px]">
               <Image
-                src="/icons/icon-10.svg"
+                src="/icons/Icon-10.svg"
                 width={18}
                 height={18}
                 alt="Board icon"
