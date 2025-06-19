@@ -31,7 +31,7 @@ export async function POST(req: Request) {
         completedSubtasks: CompletedSubtasks,
         dueDate: Date,
         comments: Comments,
-        status: Status,
+        status: Status.trim().toLowerCase()
       });
 
     return new Response(JSON.stringify(newTask), { status: 201 });
@@ -46,5 +46,6 @@ export async function POST(req: Request) {
 export async function GET() {
     await dbConnect();
     const tasks = await Task.find();
+    console.log(tasks)
     return new Response(JSON.stringify(tasks), { status: 200 });
-  }
+}

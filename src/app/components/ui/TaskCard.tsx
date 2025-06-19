@@ -1,11 +1,32 @@
+"use client";
 import { BsChatSquareText, BsThreeDots } from "react-icons/bs";
+import { useDraggable } from "@dnd-kit/core";
 import { GoPaperclip } from "react-icons/go";
 import ProgressBar from "./ProgressBar";
 import { Task } from "../TaskBoard";
 
 export default function TaskCard({ task }: { task: Task }) {
+  const { attributes, listeners, setNodeRef, transform,isDragging } = useDraggable({
+    id: task._id, // this becomes `active.id` on drag
+  });
+
+  const style = {
+    transform: transform
+      ? `translate(${transform.x}px, ${transform.y}px)`
+      : undefined,
+    cursor: isDragging ? "grabbing" : "grab", // 👈 change the cursor here
+    opacity: isDragging ? 0.6 : 1, // optional: visual feedback
+    transition: "opacity 0.2s ease",
+  };
+
   return (
-    <div className="w-[320px] min-h-[178px] border-[2px] border-[#1C1D220F] dark:bg-[#292B31] rounded-[12px] card">
+    <div
+      ref={setNodeRef}
+      {...attributes}
+      {...listeners}
+      style={style}
+      className="w-[320px] min-h-[178px] border-[2px] border-[#1C1D220F] dark:bg-[#292B31] rounded-[12px] card"
+    >
       <div className="p-[20px]">
         <div className="flex items-center justify-between mb-[22px]">
           <div>
