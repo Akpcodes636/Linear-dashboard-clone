@@ -1,9 +1,7 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import TaskColumn from "./TaskColumn";
 import { DndContext, closestCenter, DragEndEvent } from "@dnd-kit/core";
-
 
 export interface Task {
   _id: string;
@@ -21,7 +19,7 @@ interface TaskBoardProps {
   filters: Partial<Pick<Task, "status" | "project">>;
 }
 
-export default function TaskBoard({ customColumns = [] }: { customColumns: string[] }) {
+export default function TaskBoard({ customColumns = [], filters = {} }: TaskBoardProps) {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
   // const [filters, setFilters] = useState<Partial<Pick<Task, "status" | "project">>>({});
