@@ -39,13 +39,13 @@ export default function TaskCard({ task }: { task: Task }) {
               {task?.project}
             </p>
           </div>
-          <div className="w-[26px] h-[26px] border border-[#1C1D221A] dark:border-[#FFFFFF1A] rounded-full flex items-center justify-center">
-            {/* <BsThreeDots className="text-[#1C1D22] dark:text-[#FFFFFF80]" /> */}
+          <div  className="w-[26px] h-[26px] border border-[#1C1D221A] dark:border-[#FFFFFF1A] rounded-full flex items-center justify-center">
+            <BsThreeDots className="text-[#1C1D22] dark:text-[#FFFFFF80]" />
             <TaskActionsMenu 
               task={task} 
               onTaskDeleted={() => console.log("Task deleted")} 
               onTaskUpdated={() => console.log("Task updated")} 
-            />
+            /> 
           </div>
         </div>
 

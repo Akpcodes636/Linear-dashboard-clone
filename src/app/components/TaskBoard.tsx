@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import TaskColumn from "./TaskColumn";
 import { DndContext, closestCenter, DragEndEvent } from "@dnd-kit/core";
-import AddViewButton from "../components/AddViewButton"; // ✅ create this component
+
 
 export interface Task {
   _id: string;
@@ -114,7 +114,7 @@ export default function TaskBoard({ customColumns = [] }: { customColumns: strin
           <TaskColumn title="Done" tasks={done} loading={loading} />
 
           {groupedCustom.map(({ name, tasks }) => (
-            <TaskColumn key={name} title={name as any} tasks={tasks} loading={loading} />
+            <TaskColumn key={name} title={name} tasks={tasks} loading={loading} />
           ))}
         </div>
       </DndContext>
