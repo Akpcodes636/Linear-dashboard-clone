@@ -45,7 +45,7 @@ export default function Page() {
           </div>
           <AddViewButton onAdd={handleAddColumn} />
         </div>
-        <FilterBar onApply={handleApplyFilters} />
+        {/* <FilterBar onApply={handleApplyFilters} /> */}
       </div>
       <div className="overflow-x-auto scrollbar-hide pb-4 card mt-[20px]">
         <TaskBoard customColumns={customColumns} filters={filters} />
