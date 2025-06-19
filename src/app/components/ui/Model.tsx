@@ -11,7 +11,6 @@ export default function TaskModalExample({
   isOpen,
   onClose,
 }: TaskModalExampleProps) {
-  const [taskTitle, setTaskTitle] = useState("");
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
