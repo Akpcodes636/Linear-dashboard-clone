@@ -18,7 +18,7 @@ export default function TaskColumn({ title, tasks, loading }: Props) {
   });
 
   return (
-    <div ref={setNodeRef} className="max-w-[360px] min-h-[826px] border-2 border-dashed border-[#1C1D2214] rounded-[12px] flex-shrink-0 bg-white dark:bg-[#24262C] px-[16px] py-[22px]">
+    <div ref={setNodeRef} className="w-full max-w-[360px] min-h-[826px] border-2 border-dashed border-[#1C1D2214] rounded-[12px] flex-shrink-0 bg-white dark:bg-[#24262C] px-[16px] py-[22px]">
      <TaskCardBtn sectionTitle={title} taskCount={tasks.length} />
       <div className="flex flex-col gap-4">
         {loading
