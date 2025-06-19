@@ -4,11 +4,13 @@ import { useDraggable } from "@dnd-kit/core";
 import { GoPaperclip } from "react-icons/go";
 import ProgressBar from "./ProgressBar";
 import { Task } from "../TaskBoard";
+import TaskActionsMenu from "../TaskColumn/TaskActionsMenu";
 
 export default function TaskCard({ task }: { task: Task }) {
   const { attributes, listeners, setNodeRef, transform,isDragging } = useDraggable({
     id: task._id, // this becomes `active.id` on drag
   });
+  // const [showMenu, setShowMenu] = useState(false);
 
   const style = {
     transform: transform
@@ -38,7 +40,12 @@ export default function TaskCard({ task }: { task: Task }) {
             </p>
           </div>
           <div className="w-[26px] h-[26px] border border-[#1C1D221A] dark:border-[#FFFFFF1A] rounded-full flex items-center justify-center">
-            <BsThreeDots className="text-[#1C1D22] dark:text-[#FFFFFF80]" />
+            {/* <BsThreeDots className="text-[#1C1D22] dark:text-[#FFFFFF80]" /> */}
+            <TaskActionsMenu 
+              task={task} 
+              onTaskDeleted={() => console.log("Task deleted")} 
+              onTaskUpdated={() => console.log("Task updated")} 
+            />
           </div>
         </div>
 
